@@ -8,7 +8,7 @@ import {
   CalendarOutlined,
 } from "@ant-design/icons";
 
-import Image from "../assets/img/car.png";
+import defaultImage from "../assets/img/car.png";
 
 const { Title } = Typography;
 
@@ -21,7 +21,7 @@ function Card(props) {
 
   return (
     <div className="car-card">
-      <img src={props.image || Image} alt={props.name} />
+      <img src={props.image || defaultImage} alt={props.name || "Image"} />
       <Title level={4}>
         {props.name || "Name"}/{props.category || "Category"}
       </Title>

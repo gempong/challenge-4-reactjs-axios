@@ -18,7 +18,7 @@ function Detail() {
 
   const { Title } = Typography;
 
-  async function getAllCar() {
+  async function getDetailCar() {
     await axios
       .get(`https://rent-cars-api.herokuapp.com/admin/car/${id}`)
       .then((res) => {
@@ -37,7 +37,7 @@ function Detail() {
     }).format(value);
 
   React.useEffect(() => {
-    getAllCar();
+    getDetailCar();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
@@ -112,12 +112,12 @@ function Detail() {
               {!!state.car && (
                 <div className="car-detail-card">
                   <img
-                    src={state.car && state.car.image}
-                    alt={state.car && state.car.name}
+                    src={!!state.car && state.car.image}
+                    alt={!!state.car && state.car.name}
                   />
                   <Title level={4}>
-                    {state.car && state.car.name}/
-                    {state.car && state.car.category}
+                    {!!state.car && state.car.name}/
+                    {!!state.car && state.car.category}
                   </Title>
                   <div className="car-details">
                     <span>
@@ -132,7 +132,7 @@ function Detail() {
                   </div>
                   <div className="price">
                     <span>Total</span>
-                    <span>{state.car && numberFormat(state.car.price)}</span>
+                    <span>{!!state.car && numberFormat(state.car.price)}</span>
                   </div>
                   <Link
                     className="btn-primary"
